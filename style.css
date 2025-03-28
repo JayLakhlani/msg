@@ -1,0 +1,127 @@
+/* Basic Reset & Font */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffe4e9; /* Soft pink background */
+    color: #333;
+    line-height: 1.6;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Main Content Container */
+.container {
+    background-color: rgba(255, 255, 255, 0.85);
+    padding: 40px 50px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+header h1 {
+    color: #d81b60;
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 2.2em;
+}
+
+#confession-content p {
+    color: #555;
+    font-size: 1.1em;
+    font-weight: 300;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+footer .signature {
+    color: #777;
+    font-style: italic;
+    font-size: 1em;
+    font-weight: 400;
+    text-align: right;
+    margin-top: 10px;
+    line-height: 1.3;
+}
+
+/* Floating Items Container */
+.floating-items-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Shared styles for floating items */
+.heart, .cat {
+    position: absolute;
+    bottom: -50px; /* Start below the screen */
+    font-size: 20px; /* Base size, varied by JS */
+    user-select: none;
+    pointer-events: none;
+    animation: floatUp linear infinite;
+    opacity: 0; /* Start transparent, fade in via animation */
+}
+
+/* Specific style for Hearts */
+.heart {
+    color: rgba(255, 105, 180, 0.7); /* Transparent pink */
+}
+
+/* Specific style for Cats (mostly uses emoji colors) */
+.cat {
+     /* Emoji colors dominate, but opacity is controlled by animation */
+     /* We can still set a fallback color or adjust opacity here if needed */
+     /* e.g., color: rgba(0, 0, 0, 0.7); */
+}
+
+
+/* Floating Animation (used by both hearts and cats) */
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10%, 90% {
+        /* Fade in and stay visible for most of the duration */
+        opacity: 0.7; /* Applied to both heart color and cat emoji */
+    }
+    100% {
+        transform: translateY(-100vh) rotate(360deg); /* Float up and off screen */
+        opacity: 0;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .container {
+        padding: 30px 25px;
+    }
+    header h1 {
+        font-size: 1.8em;
+    }
+    #confession-content p {
+        font-size: 1em;
+    }
+    .heart, .cat {
+        /* Optionally reduce size further on small screens */
+        /* font-size: 16px; */
+    }
+}
